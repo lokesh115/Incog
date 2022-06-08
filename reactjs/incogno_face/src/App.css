@@ -1,11 +1,11 @@
 .App {
   height: 100vh;
-  background: lightblue;
+  background-color: lightblue;
 }
 
 .incogno{
   position:relative;
-  top:20%;
+  top:15%;
   left:44%;
 }
 
@@ -20,7 +20,7 @@
   height: 270px;
   padding: 30px;
   position: relative;
-  top:25%;
+  top:20%;
   left:35%;
 }
 

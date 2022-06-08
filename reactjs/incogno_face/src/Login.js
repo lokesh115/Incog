@@ -6,7 +6,8 @@ function Login(){
 
     const [submitting, setSubmitting] = useState(false);
 
-    const handleSubmit = event=>{
+
+    const handleSubmit = async (event)=>{
         event.preventDefault();
         setSubmitting(true);
 
@@ -20,9 +21,9 @@ function Login(){
             <div>
             <h2 className="login">Login</h2><br/>
             </div>
-            <form  onSubmit={handleSubmit}>
-                <label htmlFor="uname">Username: </label>
-                <input type="text" id="uname" name="uname" className='login_input'/><br/>
+            <form onSubmit={handleSubmit} method="POST">
+                <label htmlFor="username">Username: </label>
+                <input type="text" id="username" name="username" className='login_input'/><br/>
                 <label htmlFor="password">Password  :   </label>
                 <input type="text" id="password" name="password" className='login_input'/><br/>
                 <input type="submit" value="Submit" className='login_submit'/>
@@ -30,9 +31,6 @@ function Login(){
             {submitting &&
                 <div className="submit_notify">Submtting Form...</div>
             }
-            <div className='create_acc'>
-                <a href="http:www.google.com">Create new account</a>
-            </div>
         </div>
     );
 }
