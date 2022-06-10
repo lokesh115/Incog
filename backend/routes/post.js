@@ -1,20 +1,10 @@
 const express = require('express');
-const User = require('../models/User');
 const router = express.Router();
 const verify = require('./verifyToken');
+const {getPost,addPost} = require('../controllers/postControl')
 
+router.post('/view',verify,getPost);
 
-router.get('/',verify,(req,res)=>{
-    /*
-    res.json({
-        posts: {
-            title: 'My first post',
-            description: 'Random data you should not access'
-        }
-    })
-    */
-    res.send(req.user);
-
-});
+router.post('/add',verify,addPost);
 
 module.exports = router;

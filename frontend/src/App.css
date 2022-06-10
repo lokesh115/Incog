@@ -6,7 +6,7 @@
   align-items: center;
 }
 .posts{
-  display: inline-block;
+  display: block;
   font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -17,11 +17,11 @@
   border-width: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   margin: 10px 5px;
-  padding: 0 16px 16px 16px;
-  max-width: 468px;
+  padding: 16px 16px 26px 16px;
+  max-width: 200px;
 
   position: relative;
-  left: 400px;
+  left: 40px;
   
 }
 
@@ -32,6 +32,12 @@
 }
 
 .posts p{
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.posts button{
   font-size: 16px;
   font-weight: normal;
   line-height: 20px;
@@ -40,4 +46,19 @@
 .red{
   color: red;
   font-size: 50px;
+}
+
+.home{
+  
+}
+
+.home button{
+  postion: absolute;
+  top: 15px;
+  left: 120px
+}
+
+.home p{
+  position: absolute;
+  left: 10px
 }

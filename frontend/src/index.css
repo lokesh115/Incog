@@ -12,7 +12,7 @@ input .formbutton{
   outline: none;
 }
 
-.App{
+.Apap{
   height: 100vh;
   display: flex;
   align-items: center;
@@ -20,7 +20,13 @@ input .formbutton{
   background-color: #53565A;
 }
 
-form{
+.App button{
+  position:absolute;
+  top:15px;
+  right:70px
+}
+
+faorm{
   display: block;
   position: relative;
 }
@@ -63,7 +69,7 @@ form .form-inner .form-group {
   color: #FE4880;
 }
 
-form .form-inner .form-group input {
+faorm .form-inner .form-group input {
   display: block;
   width: 100px;
   padding: 10px 15px;
@@ -106,7 +112,7 @@ form .form-inner input[type="submit"]:hover,
   color:#888 ;
   font-size: 28px;
   font-weight: 500;
-  margin-bottom: 30px;
+  
 }
 
 .welcome h2 span{
