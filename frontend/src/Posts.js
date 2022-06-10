@@ -1,8 +1,5 @@
 import React from "react";
 import './App.css';
-import ViewStory from "./components/ViewStory";
-import { BrowserRouter, Link, Route,Routes } from "react-router-dom";
-
 
 function Posts(props){
 

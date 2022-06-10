@@ -1,6 +1,4 @@
-import React, { useState,useEffect } from "react";
-import Posts from "./Posts";
-import ReactDOM from "react-dom/client";
+import React from "react";
 import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeView from "./components/HomeView";
