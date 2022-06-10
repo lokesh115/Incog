@@ -1,3 +1,4 @@
+/*
 import React, {useState} from 'react';
 import LoginForm from './components/SignUpForm';
 import './App.css';
@@ -48,3 +49,4 @@ function SignUp() {
 
 
 export default Signup;
+*/

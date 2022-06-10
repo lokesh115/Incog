@@ -1,13 +1,15 @@
 import React from "react";
 import Login from "./Login";
-import SignUp from "./Signup";
+//import SignUp from "./Signup";
 import './App.css';
-//import TweetApp from "./TweetApp";
+import Home from "./Home";
+
+
 
 function App() {
     return(
       <div>
-        <Signup/>
+        <Home/>
       </div>
       );
 }

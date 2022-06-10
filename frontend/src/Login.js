@@ -4,40 +4,35 @@ import './App.css';
 
 
 function Login() {
-    const adminUser = {
-        email: "admin@admin.com",
-        password: "admin123"
-      }
   
-      const[user , setUser] = useState({name: "" , email: ""});
+      const[user , setUser] = useState({name: ""});
       const[error , setError] = useState("");
+      
+
+      const Login =
+        (details) =>{
+            console.log(details);
   
-      const Login =  details =>{
-          console.log(details);
-
-          if (details.email == adminUser.email && details.password == adminUser.password){
-            console.log("Logged in");
-            setUser({
-                name: details.name,
-                email: details.email
-            });
-
-          }else {
-           console.log("Detais do not match!");
-           setError("Detais do not match!");
-          }
-            
-      }
+            if (details.status){
+              console.log("Logged in");
+              setUser({"name": details.name})
+  
+            }else {
+             console.log(details.message);
+             setError(details.message);
+            }
+              
+        };
   
       const Logout = () =>{
-          setUser({name: "",email: ""});
+          setUser({name: ""});
           console.log("Logout");
       }
       return(
           <div className='App'>
-              {(user.email !="") ? (
+              {(user.name !="") ? (
                 <div className="welcome">
-                <h2>Welcome,<span>{user.name}</span></h2>
+                <h2>Welcome, <span>{user.name}</span></h2>
                 <button onClick={Logout}>Logout</button>
                 </div>
             ): (
