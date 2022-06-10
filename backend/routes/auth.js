@@ -6,4 +6,5 @@ router.post('/register',regPost);
 
 router.post('/login',loginPost)
 
+
 module.exports = router;
