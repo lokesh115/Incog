@@ -12,7 +12,7 @@ function Login() {
 
       const Login =
         (details) =>{
-            console.log(details);
+            //console.log(details);
   
             if (details.status){
               console.log("Logged in");
@@ -22,7 +22,7 @@ function Login() {
               })
   
             }else {
-             console.log(details.message);
+             //console.log(details.message);
              setError(details.message);
             }
               
@@ -32,7 +32,7 @@ function Login() {
           setUser({
             name: "",
             token:""});
-          console.log("Logout");
+          console.log("Logged out");
       }
       return(
           <div className='App'>
