@@ -3,13 +3,17 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
     title: {
         type: String,
-        require: true,
+        required: true,
         max: 255,
         min: 6
     },
+    name: {
+        type: String,
+        required: true
+    },
     story: {
         type: String,
-        require: true,
+        required: true,
         max: 4000,
         min: 1
     },

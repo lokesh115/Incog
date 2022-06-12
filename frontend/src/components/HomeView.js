@@ -10,22 +10,22 @@ function HomeView({uname,token}){
           'Content-Type': 'application/json',
           'auth-token': token }
     }
+
     useEffect(()=>{
-      fetch(process.env.REACT_APP_API_URL.concat("api/posts/view"),reqData)
+      fetch(("https://incog-back.herokuapp.com/api/posts/view"),reqData)
       .then(response=>response.json())
       .then(posts=>{setUsers(posts)});
-      //console.log(users);
     });
     
     return (
         <div className="home">
           <h2>Welcome, {uname}</h2>
-          {users.map(user => (
-            <div>
-            <Posts title={user.title} story={user.story}/>
-            <br/>
-            </div>
-          ))}
+          <ul>
+            {users.map(user => (
+              <li key={user._id}><Posts name={user.name} title={user.title} story={user.story}/></li>
+            ))}
+          </ul>
+          
         </div>
       );
 }

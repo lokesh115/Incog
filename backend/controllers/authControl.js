@@ -6,11 +6,17 @@ const bcrypt = require('bcryptjs')
 const regPost = async (req,res)=>{
     //Validate the user
     const {error} = registerValidation(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return res.status(400).json({
+        "status" : false,
+        "message" : error.details[0].message
+    });
 
     //Checking if the user is already in the database
     const emailExist = await User.findOne({email: req.body.email})
-    if(emailExist) return res.status(400).send("email already exits")
+    if(emailExist) return res.status(400).json({
+        "status" : false,
+        "message" : "email already exits"
+    });
 
     //Hash passwords
     const salt = await bcrypt.genSalt(10);
@@ -19,21 +25,22 @@ const regPost = async (req,res)=>{
 
     //Input and save user details
     const user = new User({
-        name: req.body.name,
         email: req.body.email,
         password: hashedPassword
     });
     try{
         const savedUser = await user.save(user);
-        res.send({user: user._id});
+        console.log(user)
+        res.json({"message":"New user : "+user.email+" has been created!"});
     }catch(err){
-        res.status(400).send(err);
+        res.status(400).json({"message":err});
     }
 };
 
 const loginPost = async (req,res)=>{
     console.log(req.body);
     let request = req.body;
+
     const {error} = loginValidation(request);
     if(error) return res.status(400).json({
         "status" : false,

@@ -17,7 +17,7 @@ function Login() {
             if (details.status){
               console.log("Logged in");
               setUser({
-                "name": details.name,
+                "name": details.email,
                 "token": details.JWT_token
               })
   
@@ -29,7 +29,9 @@ function Login() {
         };
   
       const Logout = () =>{
-          setUser({name: ""});
+          setUser({
+            name: "",
+            token:""});
           console.log("Logout");
       }
       return(

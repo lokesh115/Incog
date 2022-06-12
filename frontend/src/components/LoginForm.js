@@ -11,6 +11,7 @@ function LoginForm({Login , error}) {
         JWT_token:""
     });
     const [submitting, setSubmitting] = useState(false);
+    const [creating, setCreating] = useState(false);
 
     const user_data = {
         method: 'POST',
@@ -19,7 +20,6 @@ function LoginForm({Login , error}) {
             "email" : details.email,
             "password" : details.password
         }) }
-        
     
     useEffect(()=>{
         Login(details);
@@ -31,7 +31,8 @@ function LoginForm({Login , error}) {
         setTimeout(()=>{
             setSubmitting(false);
         },2000)
-        fetch(process.env.REACT_APP_API_URL.concat("api/user/login"),user_data)
+        
+        fetch("https://incog-back.herokuapp.com/api/user/login",user_data)
         .then(response => response.json())
         .then(data=>{
             //console.log(data.message);
@@ -50,9 +51,30 @@ function LoginForm({Login , error}) {
         })
         details.password='';
         //Login(details);
-        
-        
     };
+    const createHandler = e =>{
+        e.preventDefault();
+        setCreating(true);
+        setTimeout(()=>{
+            setSubmitting(false);
+        },2000)
+        fetch("https://incog-back.herokuapp.com/api/user/register",user_data)
+        .then(response => response.json())
+        .then(data=>{
+            //console.log(data.message);
+            if(!data.status){
+            setDetails({...details,
+                message:data.message,
+                })
+            }else{
+                setDetails({...details, 
+                    message:data.message, 
+                    status:true
+            })
+            }
+        })}
+        
+    
 
     return(
         <form onSubmit={submitHandler}>
@@ -61,8 +83,8 @@ function LoginForm({Login , error}) {
                 {(error !=="") ? (<div className="error">{error}</div>): ""}
     
                 <div className="form-group">
-                    <label htmlFor= "email">Email:</label>
-                    <input type="email" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+                    <label htmlFor= "email">User ID:</label>
+                    <input type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
 
                 </div>
                 <div className="form-group">
@@ -70,10 +92,16 @@ function LoginForm({Login , error}) {
                     <input type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
 
                 </div>
-                <input type="submit" value="LOGIN"/>
+
+                <div><input type="submit" value="LOGIN"/></div>
+                
+                <div><input type="button" value="Create new account" onClick={createHandler}/></div>
 
                 {submitting &&
                 <div className="submit_notify">Loading...</div>
+            }
+                {creating &&
+                <div className="submit_notify">Creating...</div>
             }
             </div>
         </form>    

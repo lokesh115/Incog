@@ -17,6 +17,7 @@ getPost = async (req,res)=>{
 
 addPost = async (req,res)=>{
     const newPost = new Posts({
+        name: req.body.name,
         title: req.body.title,
         story: req.body.story,
         isAllowed: req.body.isAllowed

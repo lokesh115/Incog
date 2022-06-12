@@ -5,9 +5,8 @@ const Layout = () => {
     <>
       <nav>
         <ul>
-            <Link to="/">Home </Link>
-            <br/>
-            <Link to="/createPost"> New Post</Link>
+            <li key="HomeKey"><Link to="/">Home </Link></li>
+            <li key="NewPostKey"><Link to="/createPost"> New Post</Link></li>
         </ul>
       </nav>
 

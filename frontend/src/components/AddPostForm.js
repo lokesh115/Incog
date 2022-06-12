@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 function AddPostForm({uname,token}){
     const [newPost, setNewPost] = useState({
+        name : "",
         title : "",
         story : "" ,
         token: "", 
@@ -19,6 +20,7 @@ function AddPostForm({uname,token}){
           'Content-Type': 'application/json',
           'auth-token': token },
         body: JSON.stringify({
+            "name" : uname,
             "title" : newPost.title,
             "story" : newPost.story
         }) }
@@ -27,7 +29,7 @@ function AddPostForm({uname,token}){
         e.preventDefault();
         setSubmitting(true);
         console.log(newPost)
-        fetch(process.env.REACT_APP_API_URL.concat("api/posts/add"),post_data)
+        fetch("https://incog-back.herokuapp.com/api/posts/add",post_data)
         .then(response => response.json())
         .then(data=>{
             //console.log(data.message);
@@ -48,6 +50,8 @@ function AddPostForm({uname,token}){
         
             <div className="form-inner">
             {submitting && <button onClick={() => navigate(-1)}>Go to Home</button>}
+
+                <button onClick={navigate(-1)}>Home</button>
                 <h2>Fill the form</h2>
 
                 <div className="form-group">

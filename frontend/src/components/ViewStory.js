@@ -1,8 +1,12 @@
 import React from "react";
 
-function ViewStory(){
+function ViewStory(state){
     return(
-        <h1>This is the stroy</h1>
+        <div>
+            <h1>This is the stroy</h1>
+            {console.log(state)}
+            <p>{state.story}</p>
+        </div>
     );
 }
 

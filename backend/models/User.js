@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true,
         max: 255,
         min: 6
     },
