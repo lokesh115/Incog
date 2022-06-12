@@ -20,7 +20,7 @@ addPost = async (req,res)=>{
         name: req.body.name,
         title: req.body.title,
         story: req.body.story,
-        isAllowed: req.body.isAllowed
+        isAllowed: req.body.isAllowed 
     });
     try{
         const savedPost = await newPost.save(newPost);

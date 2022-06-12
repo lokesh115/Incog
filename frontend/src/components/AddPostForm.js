@@ -28,12 +28,15 @@ function AddPostForm({uname,token}){
     const submitHandler = (e)=>{
         e.preventDefault();
         setSubmitting(true);
-        console.log(newPost)
+        //console.log(newPost)
+        //console.log(uname,token);
+        console.log(post_data);
         fetch("https://incog-back.herokuapp.com/api/posts/add",post_data)
         .then(response => response.json())
         .then(data=>{
             //console.log(data.message);
-            setNewPost({...newPost,message:data.message})
+            setNewPost({...newPost,message:data.message});
+            console.log(newPost);
         })
         navigate(-1)
         //Login(details);
@@ -49,9 +52,9 @@ function AddPostForm({uname,token}){
         <form onSubmit={submitHandler}>
         
             <div className="form-inner">
-            {submitting && <button onClick={() => navigate(-1)}>Go to Home</button>}
+                <button onClick={() => navigate(-1)}>Home</button>
 
-                <button onClick={navigate(-1)}>Home</button>
+                
                 <h2>Fill the form</h2>
 
                 <div className="form-group">
@@ -61,7 +64,7 @@ function AddPostForm({uname,token}){
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Description:</label>
-                    <input type="story" name="story" id= "story" onChange={e => setNewPost({...newPost,story: e.target.value })}value={newPost.story}/>
+                    <input type="story" name="story" id= "story" onChange={e => setNewPost({...newPost,story: e.target.value })} value={newPost.story}/>
 
                 </div>
                 {!submitting && <input type="submit" value="POST"/>}

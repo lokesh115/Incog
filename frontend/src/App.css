@@ -40,8 +40,10 @@
 
 .posts button{
   font-size: 16px;
-  font-weight: normal;
-  line-height: 20px;
+  font-weight:normal;
+  border-radius: 2px;
+  width: 70px;
+
 }
 
 .red{
@@ -62,4 +64,9 @@
 .home p{
   position: absolute;
   left: 10px
+}
+
+.desc{
+  position: relative;
+  left: 300px;
 }

@@ -1,8 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import './App.css';
-import {Link} from "react-router-dom";
 
 function Posts(props){
+    const [show,setShow] = useState(false);
+
+    const clickHandler = ()=>{
+      setShow(!show);
+    }
     return(
         <div className="posts">
           <h2>{props.name}</h2>
@@ -10,7 +14,11 @@ function Posts(props){
           
           {//<p>{props.story}</p>;
           }
-          <Link to="/viewStory" state={props}>Click</Link>
+          <button onClick={clickHandler}>Nokku</button>
+          {show && 
+          <div className="desc">
+            <p>{props.story}</p>
+          </div>}
         </div>
     );
 }
