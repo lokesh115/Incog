@@ -53,7 +53,6 @@ function AddPostForm({uname,token}){
         
             <div className="form-inner">
                 <button onClick={() => navigate(-1)}>Home</button>
-
                 
                 <h2>Fill the form</h2>
 
