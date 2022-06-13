@@ -40,17 +40,9 @@
 
 .posts button{
   font-size: 16px;
-  font-weight:normal;
-  border-radius: 2px;
-  width: 70px;
-  position: absolute;
-
-}
-
-.posts .delete{
-  position: relative;
-  top: 10%;
-  left: 62.5%;
+  font-weight: normal;
+  line-height: 20px;
+ background-color: red;
 }
 
 .red{
@@ -58,22 +50,14 @@
   font-size: 50px;
 }
 
-.home{
-  
-}
 
-.home button{
-  postion: absolute;
-  top: 15px;
-  left: 120px
-}
 
 .home p{
   position: absolute;
   left: 10px
 }
 
-.desc{
-  position: relative;
-  left: 300px;
+.image{
+  width: 100%;
+  height: 1000px;
 }
