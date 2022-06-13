@@ -43,7 +43,14 @@
   font-weight:normal;
   border-radius: 2px;
   width: 70px;
+  position: absolute;
 
+}
+
+.posts .delete{
+  position: relative;
+  top: 10%;
+  left: 62.5%;
 }
 
 .red{

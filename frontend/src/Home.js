@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeView from "./components/HomeView";
 import AddPostForm from "./components/AddPostForm";
+import MyPosts from "./components/MyPosts";
 import './App.css';
 
 function Home({uname,token}){
@@ -12,7 +13,7 @@ function Home({uname,token}){
         <Route exact path="/" element={<Layout />}>
         <Route index element={<HomeView uname={uname} token={token} />} />
         <Route path="/createPost" element={<AddPostForm uname={uname} token={token}/>} />
-
+        <Route path="/myPosts" element={<MyPosts uname={uname} token={token}/>} />
         
       </Route>
       </Routes>

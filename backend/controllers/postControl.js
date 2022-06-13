@@ -15,6 +15,16 @@ getPost = async (req,res)=>{
 
 }
 
+getUserPost = async (req,res)=>{
+    let uname = req.body.name;
+    const userPosts = await Posts.find({name:uname});
+    try{
+        res.json(userPosts);
+    }catch(err){
+        res.json({"message":err});
+    }
+}
+
 addPost = async (req,res)=>{
     const newPost = new Posts({
         name: req.body.name,
@@ -30,5 +40,17 @@ addPost = async (req,res)=>{
     }
 }
 
+deletePost = async(req,res)=>{
+    const id = req.body._id;
+    const removedPost = await Posts.deleteOne({_id:id});
+    try{
+        res.json({"message":"Post Deleted"});
+    }catch(err){
+        res.json({"message":err});
+    }
+}
+
 module.exports.getPost = getPost;
 module.exports.addPost = addPost;
+module.exports.getUserPost = getUserPost;
+module.exports.deletePost = deletePost;

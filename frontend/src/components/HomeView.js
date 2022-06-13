@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import Posts from "../Posts";
+import Posts from "./Posts";
 import '../App.css';
 
 function HomeView({uname,token}){

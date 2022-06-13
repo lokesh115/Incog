@@ -30,13 +30,12 @@ function AddPostForm({uname,token}){
         setSubmitting(true);
         //console.log(newPost)
         //console.log(uname,token);
-        console.log(post_data);
         fetch("https://incog-back.herokuapp.com/api/posts/add",post_data)
         .then(response => response.json())
         .then(data=>{
             //console.log(data.message);
             setNewPost({...newPost,message:data.message});
-            console.log(newPost);
+            console.log("Post Added");
         })
         navigate(-1)
         //Login(details);

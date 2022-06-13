@@ -1,12 +1,20 @@
 import React,{useState} from "react";
-import './App.css';
+import '../App.css';
 
 function Posts(props){
-    const [show,setShow] = useState(false);
+    const [show,setShow] = useState({
+        button:"View",
+        value:false
+    });
 
     const clickHandler = ()=>{
-      setShow(!show);
-    }
+      if(show.value){
+          setShow({...show,button: "View",value:false});
+      }
+      else{
+          setShow({...show,button: "Hide",value:true});
+      }
+  }
     return(
         <div className="posts">
           <h2>{props.name}</h2>
@@ -14,8 +22,8 @@ function Posts(props){
           
           {//<p>{props.story}</p>;
           }
-          <button onClick={clickHandler}>Nokku</button>
-          {show && 
+          <button onClick={clickHandler}>{show.button}</button>
+          {show.value && 
           <div className="desc">
             <p>{props.story}</p>
           </div>}
