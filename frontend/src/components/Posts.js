@@ -15,20 +15,19 @@ function Posts(props){
           setShow({...show,button: "Hide",value:true});
       }
   }
+
     return(
         <div className="posts">
           <h2>{props.name}</h2>
           <h3>{props.title}</h3>
-          
           {//<p>{props.story}</p>;
           }
-          <button onClick={clickHandler}>{show.button}</button>
+          <button className='delete' onClick={clickHandler}>{show.button}</button>
           {show.value && 
-          <div className="desc">
+          <div className="postStory">
             <p>{props.story}</p>
           </div>}
         </div>
     );
 }
-
 export default Posts;

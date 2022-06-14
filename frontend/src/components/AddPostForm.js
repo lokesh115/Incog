@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import '../App.css';
+import '../index.css';
 import {useNavigate} from 'react-router-dom';
 
 function AddPostForm({uname,token}){
@@ -51,7 +52,7 @@ function AddPostForm({uname,token}){
         <form onSubmit={submitHandler}>
         
             <div className="form-inner">
-                <button onClick={() => navigate(-1)}>Home</button>
+                <button className="logout" onClick={() => navigate(-1)}>Home</button>
                 
                 <h2>Fill the form</h2>
 

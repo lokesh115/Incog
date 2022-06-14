@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-
+import '../index.css';
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -77,9 +77,8 @@ function LoginForm({Login , error}) {
     
 
     return(
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="App">
             <div className="form-inner">
-                <h2>Login</h2>
                 {(error !=="") ? (<div className="error">{error}</div>): ""}
     
                 <div className="form-group">

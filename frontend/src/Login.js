@@ -35,11 +35,11 @@ function Login() {
           console.log("Logged out");
       }
       return(
-          <div className='App'>
+          <div>
               {(user.name !=="") ? (
                 <div>
                 <Home uname={user.name} token={user.token}/>
-                <button onClick={Logout}>Logout</button>
+                <button className='logout' onClick={Logout}>Logout</button>
                 </div>
             ): (
              <LoginForm Login={Login} error={error}/>   

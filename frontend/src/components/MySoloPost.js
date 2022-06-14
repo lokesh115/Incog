@@ -39,10 +39,10 @@ function MySoloPost(props){
           <h2>{props.name}</h2>
           <h3>{props.title}</h3>
           <p>{props._id}</p>
-          <button onClick={showHandler}>{show.button}</button>
+          <button className='delete' onClick={showHandler}>{show.button}</button>
           <button className="delete" onClick={deleteHandler}>Delete</button>
           {show.value && 
-          <div className="desc">
+          <div className="postStory">
             <p>{props.story}</p>
           </div>}
         </div>

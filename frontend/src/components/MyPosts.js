@@ -23,9 +23,9 @@ function MyPosts({uname,token}){
             });
     });
     return(
-        <div className="home">
+        <div>
             <h1>My posts!!!!!!!!!</h1>
-            <ul>
+            <ul className="postsList">
             {myPosts.map(post => (
               <li key={post._id}><MySoloPost name={post.name} title={post.title} story={post.story} id={post._id} token={token}/></li>
             ))}

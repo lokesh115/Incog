@@ -18,11 +18,11 @@ function HomeView({uname,token}){
     });
     
     return (
-        <div className="home">
+        <div>
           <h2>Welcome, {uname}</h2>
-          <ul>
+          <ul className="postsList">
             {users.map(user => (
-              <li key={user._id}><Posts name={user.name} title={user.title} story={user.story}/></li>
+              <li key={user._id}><Posts name={user.name} title={user.title} story={user.story} id={user._id}/></li>
             ))}
           </ul>
           
