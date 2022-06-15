@@ -21,7 +21,7 @@ input .formbutton{
 }
 
 .login{
-  height: auto;
+  height: auto 50px;
   background-image: url('./components/abc.jpg');
 }
 
@@ -40,6 +40,11 @@ input .formbutton{
   font-weight: 700;
   cursor: pointer;
 }
+
+.logout :hover {
+  background-position: 100% 0% ;
+}
+
 
 form::after{
   content: '';
@@ -92,15 +97,12 @@ form .form-inner .form-group {
 
 .form-inner .form-group label{
   display: block;
-  color: rgb(16, 2, 2);
+  color: rgb(137, 109, 109);
   font-size: 12px;
   margin-bottom: 5px;
   transition: 0.4s;
 }
 
-.form-inner .form-group:focus-within label{
-  color: #eee0e4;
-}
 
 
 form .form-inner .form-group input {

@@ -23,7 +23,7 @@ function AddPostForm({uname,token}){
         body: JSON.stringify({
             "name" : uname,
             "title" : newPost.title,
-            "story" : newPost.story
+            "story" : newPost.story,
         }) }
 
     const submitHandler = (e)=>{
@@ -66,6 +66,7 @@ function AddPostForm({uname,token}){
                     <input type="story" name="story" id= "story" onChange={e => setNewPost({...newPost,story: e.target.value })} value={newPost.story}/>
 
                 </div>
+
                 {!submitting && <input type="submit" value="POST"/>}
 
                 {submitting &&

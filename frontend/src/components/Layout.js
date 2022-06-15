@@ -4,11 +4,11 @@ const Layout = () => {
   return (
     <div className='login'>
       <nav>
-        <ul className="postsList">
-            <li key="HomeKey"><Link to="/">Home </Link></li>
-            <li key="NewPostKey"><Link to="/createPost">New Post</Link></li>
-            <li key="MyPosts"><Link to="/myPosts">My Posts</Link></li>
-        </ul>
+        <div className="btn-group">
+            <Link to="/"><button>Home</button> </Link>
+            <Link to="/createPost"><button>New Post</button></Link>
+            <Link to="/myPosts"><button>My Posts</button></Link>
+        </div>
       </nav>
 
       <Outlet />

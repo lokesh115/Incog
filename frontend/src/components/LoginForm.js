@@ -80,15 +80,14 @@ function LoginForm({Login , error}) {
         <form onSubmit={submitHandler} className="App">
             <div className="form-inner">
                 {(error !=="") ? (<div className="error">{error}</div>): ""}
-    
+                <h1 style={{textAlign : "center", color:"#4267B2", fontFamily:"Helvetica, Arial, sans-serif"}}>incog</h1>
+                <br/>
                 <div className="form-group">
-                    <label htmlFor= "email">User ID:</label>
-                    <input type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+                    <input placeholder='Username' type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
 
                 </div>
                 <div className="form-group">
-                    <label htmlFor="">password:</label>
-                    <input type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+                    <input placeholder='Password' type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
 
                 </div>
 

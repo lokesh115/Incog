@@ -19,10 +19,10 @@ function HomeView({uname,token}){
     
     return (
         <div>
-          <h2>Welcome, {uname}</h2>
+          <h2 style={{textAlign: "center", fontWeight: "lighter" ,fontFamily: "Brush Script MT, Brush Script Std, cursive"}}>Welcome, {uname}</h2>
           <ul className="postsList">
             {users.map(user => (
-              <li key={user._id}><Posts name={user.name} title={user.title} story={user.story} id={user._id}/></li>
+              <li key={user._id}><Posts name={user.name} title={user.title} story={user.story} id={user._id} time={user.time} token={token} user={uname}/></li>
             ))}
           </ul>
           
