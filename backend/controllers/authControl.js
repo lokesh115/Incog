@@ -66,7 +66,8 @@ const loginPost = async (req,res)=>{
         "status" : true,
         "JWT_token" : token,
         "message" : "Login successful",
-        "name" : user.name
+        "name" : user.name,
+        "isAdmin" : user.isAdmin
     });
 
 };

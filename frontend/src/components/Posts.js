@@ -3,6 +3,9 @@ import '../App.css';
 import ViewComment from './ViewComment'
 
 function Posts(props){
+
+    //console.log(props);
+
     const [show,setShow] = useState({
         button:"View",
         value:false
@@ -12,6 +15,24 @@ function Posts(props){
 
     const [newComment, setNewComment] = useState('');
 
+
+    const deleteHandler = ()=>{
+      const req = {
+          method:"DELETE",
+          headers:{
+              'Content-Type': 'application/json',
+              'auth-token' : props.token
+          },
+          body:JSON.stringify({
+                  "_id" : props.id
+              })};
+          fetch("https://incog-back.herokuapp.com/api/posts/delPost",req)
+          .then(response=>response.json())
+          .then(data=>{
+              console.log(data.message);
+              });
+      
+  }
 
     const commentReq = {
       method:"POST",
@@ -71,6 +92,7 @@ function Posts(props){
           {//<p>{props.story}</p>;
           }
           <button className='delete' onClick={clickHandler}>{show.button}</button>
+          {props.isAdmin && <button className="delete" onClick={deleteHandler}>Delete</button>}
           {show.value && 
           <div className="postStory">
             <p>{props.story}</p>
@@ -78,7 +100,7 @@ function Posts(props){
             <button className = "btn" onClick={addNewComment}>ADD</button>
             <ul className="postsList">
               {comments.map(comm => (
-                <li key={comm._id}><ViewComment message={comm.comment} postedUser={comm.name} time={comm.time} token={props.token} _id={comm._id} user={props.user}/></li>
+                <li key={comm._id+5}><ViewComment message={comm.comment} postedUser={comm.name} time={comm.time} token={props.token} _id={comm._id} user={props.user}/></li>
               ))}
             </ul>
           </div>}

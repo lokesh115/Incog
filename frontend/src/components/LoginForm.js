@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import '../index.css';
+
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -8,7 +9,8 @@ function LoginForm({Login , error}) {
         password: "", 
         message:"", 
         status:false, 
-        JWT_token:""
+        JWT_token:"",
+        isAdmin:false
     });
     const [submitting, setSubmitting] = useState(false);
     const [creating, setCreating] = useState(false);
@@ -35,7 +37,6 @@ function LoginForm({Login , error}) {
         fetch("https://incog-back.herokuapp.com/api/user/login",user_data)
         .then(response => response.json())
         .then(data=>{
-            //console.log(data.message);
             if(!data.status){
                 setDetails({...details,
                     message:data.message,
@@ -45,8 +46,13 @@ function LoginForm({Login , error}) {
                     message:data.message, 
                     status:true, 
                     JWT_token:data.JWT_token,
-                    name:data.name
+                    name:data.name,
+                    isAdmin:true
                 })
+                //console.log("isAdmin"+details.isAdmin);
+                //console.log(details);
+                //console.log(data.isAdmin);
+                
             }
         })
         details.password='';

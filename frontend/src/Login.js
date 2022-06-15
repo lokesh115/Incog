@@ -6,7 +6,7 @@ import './App.css';
 
 function Login() {
   
-      const[user , setUser] = useState({name: "", token:""});
+      const[user , setUser] = useState({name: "", token:"",isAdmin:false});
       const[error , setError] = useState("");
       
 
@@ -18,8 +18,10 @@ function Login() {
               console.log("Logged in");
               setUser({
                 "name": details.email,
-                "token": details.JWT_token
+                "token": details.JWT_token,
+                "isAdmin": details.isAdmin
               })
+              console.log(details);
   
             }else {
              //console.log(details.message);
@@ -38,7 +40,7 @@ function Login() {
           <div>
               {(user.name !=="") ? (
                 <div>
-                <Home uname={user.name} token={user.token}/>
+                <Home uname={user.name} token={user.token} isAdmin={user.isAdmin}/>
                 <button className='logout' onClick={Logout}>Logout</button>
                 </div>
             ): (
