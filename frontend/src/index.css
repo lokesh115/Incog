@@ -21,7 +21,7 @@ input .formbutton{
 }
 
 .login{
-  height: auto 50px;
+  height: auto;
   background-image: url('./components/abc.jpg');
 }
 
