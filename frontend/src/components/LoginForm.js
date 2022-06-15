@@ -47,7 +47,7 @@ function LoginForm({Login , error}) {
                     status:true, 
                     JWT_token:data.JWT_token,
                     name:data.name,
-                    isAdmin:true
+                    isAdmin:data.isAdmin
                 })
                 //console.log("isAdmin"+details.isAdmin);
                 //console.log(details);

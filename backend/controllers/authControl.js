@@ -72,5 +72,18 @@ const loginPost = async (req,res)=>{
 
 };
 
+const makeAdmin = async (req,res)=>{
+    let request = req.body;
+    const updatedPost = await User.updateOne({email: request.email},
+        {$set:{
+            isAdmin: true}
+    })
+    if(updatedPost.modifiedCount==1)res.json({message:request.email+" is admin now!"});
+    else if(updatedPost.matchedCount==1) res.json({message:"The user is already an admin!"});
+    else res.json({message:"The username does not exist"});
+    
+};
+
 module.exports.regPost = regPost;
 module.exports.loginPost = loginPost;
+module.exports.makeAdmin = makeAdmin;

@@ -17,6 +17,7 @@ function Posts(props){
 
 
     const deleteHandler = ()=>{
+      console.log(props.isAdmin);
       const req = {
           method:"DELETE",
           headers:{

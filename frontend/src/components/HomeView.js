@@ -3,7 +3,6 @@ import Posts from "./Posts";
 import '../App.css';
 
 function HomeView({uname,token,isAdmin}){
-    
     const [users, setUsers] = useState([]);
     let reqData = {
       method: 'POST',
