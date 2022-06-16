@@ -56,7 +56,7 @@ function LoginForm({Login , error}) {
                 
             }
         })
-        details.password='';
+        details.password = '';
         //Login(details);
     };
     const createHandler = e =>{
@@ -80,6 +80,12 @@ function LoginForm({Login , error}) {
             }
         })}
         
+        const clearFields = ()=>{
+            //setDetails({...details,email: ' ',password:' ' });
+            details.email = '';
+            details.password = '';
+            console.log(details);
+        }
     
 
     return(
@@ -91,11 +97,11 @@ function LoginForm({Login , error}) {
                     </Card.Body>
 
                     <Form.Group controlId="uname" style={{marginBottom:"10px"}}>
-                        <Form.Control placeholder='Username' type="text" name="email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+                        <Form.Control placeholder='Username' type="text" name="uname" onChange={e => setDetails({...details,email: e.target.value })} value={details.email}/>
                     </Form.Group>
 
                     <Form.Group controlId="password" style={{marginBottom : "15px"}}>
-                        <Form.Control placeholder='Password' type="password" name="password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+                        <Form.Control placeholder='Password' type="password" name="password" onChange={e => setDetails({...details,password: e.target.value })} value={details.password}/>
                     </Form.Group>
                     {!signup &&
                      <div style={{marginBottom : "10px"}}><Button variant="primary" type="submit">Login</Button></div>
@@ -105,15 +111,16 @@ function LoginForm({Login , error}) {
                         <div><Button onClick={()=>{
                             setSignup(true);
                             createHandler();
+                            details.password='';
                         }}>Signup</Button></div>
                         }
 
                 </Card>
                 {!signup &&
-                        <div><Button onClick={()=>{setSignup(true)}}>Create new account</Button></div>
+                        <div><p onClick={()=>{setSignup(true)}} style={{textDecoration:"underline",color:"blue"}}>Create new account</p></div>
                         }
                 {signup &&
-                        <div><Button onClick={()=>{setSignup(false)}}>Go Back</Button></div>
+                        <div><p onClick={()=>{setSignup(false);clearFields();}} style={{textDecoration:"underline",color:"blue"}}>Go Back</p></div>
                         }
                 {error ==="" && submitting &&
                 <Alert className="alert alert-success">Loading...</Alert>
