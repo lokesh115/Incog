@@ -61,7 +61,7 @@ const loginPost = async (req,res)=>{
     });
 
     //Create and assign a token
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET,{expiresIn: '1h'});
     res.header('auth-token',token).json({
         "status" : true,
         "JWT_token" : token,

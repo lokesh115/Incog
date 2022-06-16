@@ -26,7 +26,7 @@ app.use('/api/user',authRoute);
 app.use('/api/posts',postRoute);
 
 app.get('/',(req,res)=>{res.json(
-    {"message":"The server is up and running!!"}
+    {"message":"The server is running!!"}
     )});
 
 app.listen(port);
