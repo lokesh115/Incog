@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import '../index.css';
-
+import { Button,Card,Form } from 'react-bootstrap';
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -83,32 +83,36 @@ function LoginForm({Login , error}) {
     
 
     return(
-        <form onSubmit={submitHandler} className="App">
-            <div className="form-inner">
+        <Form onSubmit={submitHandler} className="App">
+            <div className="App">
                 {(error !=="") ? (<div className="error">{error}</div>): ""}
-                <h1 style={{textAlign : "center", color:"#4267B2", fontFamily:"Helvetica, Arial, sans-serif"}}>incog</h1>
-                <br/>
-                <div className="form-group">
-                    <input placeholder='Username' type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
 
-                </div>
-                <div className="form-group">
-                    <input placeholder='Password' type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+                <Card className="p-3 mb-2 text-primary" style={{width: "16rem"}}>
+                    <Card.Body>
+                    <Card.Title>incog</Card.Title>
+                    </Card.Body>
 
-                </div>
+                    <Form.Group controlId="uname" style={{marginBottom:"10px"}}>
+                    <Form.Control placeholder='Username' type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+                    </Form.Group>
 
-                <div><input type="submit" value="LOGIN"/></div>
-                
-                <div><input type="button" value="Create new account" onClick={createHandler}/></div>
+                    <Form.Group controlId="password" style={{marginBottom : "15px"}}>
+                    <Form.Control placeholder='Password' type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+                    </Form.Group>
+
+                <div style={{marginBottom : "10px"}}><Button variant="primary" type="submit">Login</Button></div>
+                <div><Button variant="primary" onClick={createHandler}>Create new account</Button></div>
+
+                </Card>
 
                 {submitting &&
-                <div className="submit_notify">Loading...</div>
+                <div className="">Loading...</div>
             }
                 {creating &&
-                <div className="submit_notify">Creating...</div>
+                <div className="">Creating...</div>
             }
             </div>
-        </form>    
+        </Form>    
 
     )
 }

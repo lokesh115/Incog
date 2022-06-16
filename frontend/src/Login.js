@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import LoginForm from './components/LoginForm';
 import Home from './Home';
 import './App.css';
-
+//import {Card} from 'react-bootstrap';
 
 function Login() {
   
@@ -37,7 +37,7 @@ function Login() {
           console.log("Logged out");
       }
       return(
-          <div>
+          <div className='App'>
               {(user.name !=="") ? (
                 <div>
                 <Home uname={user.name} token={user.token} isAdmin={user.isAdmin}/>

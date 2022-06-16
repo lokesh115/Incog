@@ -1,0 +1,12 @@
+.App {
+    text-align: center;
+  }
+
+  
+.card {
+    background: #ecf2f7 ;
+    margin: auto auto; /* Added */
+    float: none; /* Added */
+    padding: 50px;
+    margin-top: 5%;
+}
