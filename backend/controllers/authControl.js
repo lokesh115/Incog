@@ -15,7 +15,7 @@ const regPost = async (req,res)=>{
     const emailExist = await User.findOne({email: req.body.email})
     if(emailExist) return res.status(400).json({
         "status" : false,
-        "message" : "email already exits"
+        "message" : "username already exits"
     });
 
     //Hash passwords
@@ -51,7 +51,7 @@ const loginPost = async (req,res)=>{
     const user = await User.findOne({email: request.email});
     if(!user) return res.status(400).json({
         "status" : false,
-        "message":"email doesn't exist"
+        "message":"username doesn't exist"
     });
     //Check if the password is correct
     const validPass = await bcrypt.compare(request.password, user.password);

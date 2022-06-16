@@ -5,8 +5,17 @@
   
 .card {
     background: #ecf2f7 ;
-    margin: auto auto; /* Added */
-    float: none; /* Added */
+    margin: auto auto; 
+    float: none; 
     padding: 50px;
-    margin-top: 5%;
+    margin-top: 10%;
+    width: 16rem;
+}
+
+.alert{
+    margin: auto auto;
+    float: none;
+    padding: 8px;
+    margin-top: 1%;
+    width: 12rem;
 }

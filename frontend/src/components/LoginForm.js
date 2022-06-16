@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import '../index.css';
-import { Button,Card,Form } from 'react-bootstrap';
+import { Button,Card,Form,Alert } from 'react-bootstrap';
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -14,6 +14,7 @@ function LoginForm({Login , error}) {
     });
     const [submitting, setSubmitting] = useState(false);
     const [creating, setCreating] = useState(false);
+    const [signup, setSignup] = useState(false);
 
     const user_data = {
         method: 'POST',
@@ -59,7 +60,6 @@ function LoginForm({Login , error}) {
         //Login(details);
     };
     const createHandler = e =>{
-        e.preventDefault();
         setCreating(true);
         setTimeout(()=>{
             setSubmitting(false);
@@ -85,32 +85,44 @@ function LoginForm({Login , error}) {
     return(
         <Form onSubmit={submitHandler} className="App">
             <div className="App">
-                {(error !=="") ? (<div className="error">{error}</div>): ""}
-
-                <Card className="p-3 mb-2 text-primary" style={{width: "16rem"}}>
+                <Card className="p-3 mb-2 text-primary">
                     <Card.Body>
-                    <Card.Title>incog</Card.Title>
+                        <Card.Title>incog</Card.Title>
                     </Card.Body>
 
                     <Form.Group controlId="uname" style={{marginBottom:"10px"}}>
-                    <Form.Control placeholder='Username' type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+                        <Form.Control placeholder='Username' type="text" name="email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
                     </Form.Group>
 
                     <Form.Group controlId="password" style={{marginBottom : "15px"}}>
-                    <Form.Control placeholder='Password' type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+                        <Form.Control placeholder='Password' type="password" name="password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
                     </Form.Group>
-
-                <div style={{marginBottom : "10px"}}><Button variant="primary" type="submit">Login</Button></div>
-                <div><Button variant="primary" onClick={createHandler}>Create new account</Button></div>
+                    {!signup &&
+                     <div style={{marginBottom : "10px"}}><Button variant="primary" type="submit">Login</Button></div>
+                     }
+                    
+                    {signup &&
+                        <div><Button onClick={()=>{
+                            setSignup(true);
+                            createHandler();
+                        }}>Signup</Button></div>
+                        }
 
                 </Card>
+                {!signup &&
+                        <div><Button onClick={()=>{setSignup(true)}}>Create new account</Button></div>
+                        }
+                {signup &&
+                        <div><Button onClick={()=>{setSignup(false)}}>Go Back</Button></div>
+                        }
+                {error ==="" && submitting &&
+                <Alert className="alert alert-success">Loading...</Alert>
+            }
+                {error ==="" && creating &&
+                <Alert className="alert alert-info">Creating...</Alert>
+            }
+                {(error !=="") ? (<Alert className="alert alert-warning alert-dismissible fade show">{error}</Alert>): ""}
 
-                {submitting &&
-                <div className="">Loading...</div>
-            }
-                {creating &&
-                <div className="">Creating...</div>
-            }
             </div>
         </Form>    
 
