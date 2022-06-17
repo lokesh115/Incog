@@ -67,18 +67,18 @@ video{
     left:50px
 }
 
-.post h2{
+.post .span1{
     color: #158FFA;
     border:1px solid rgb(29, 140, 159);
     padding:5px;
     border-radius: 2cm;
-    position: absolute;
-    left:300px;
+    margin-left: 6px;
 }
 
 .post h1{
     position: absolute;
     right:52px;
+    top:10px;
 }
 
 ul{
