@@ -8,8 +8,7 @@
     margin: auto auto; 
     float: none; 
     padding: 50px;
-    margin-top: 10%;
-    width: 16rem;
+    margin-top: 2%;
 }
 
 .alert{
@@ -18,4 +17,101 @@
     padding: 8px;
     margin-top: 1%;
     width: 12rem;
+}
+
+.login-form{
+    width: 100%;
+    height: 100vh;
+}
+
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-div{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1)
+}
+
+.home-view{
+    justify-content:center ;
+    align-items: center;
+}
+
+.post{
+    background-color: rgba(248, 23, 23, 0);
+}
+
+
+
+.post h3{
+    color: #02007d;
+    position: absolute;
+    left:50px
+}
+
+.post h2{
+    color: #158FFA;
+    border:1px solid rgb(29, 140, 159);
+    padding:5px;
+    border-radius: 2cm;
+    position: absolute;
+    left:300px;
+}
+
+.post h1{
+    position: absolute;
+    right:52px;
+}
+
+ul{
+    list-style-type:None;
+}
+
+.comments{
+    padding: 2% 3% 0% 3%;
+    background: #c3d7e8 ;
+    float: none; 
+    margin-top: 3%;
+    margin-bottom: 0%;
+    width: 16rem;
+    object-fit: cover;
+    border-radius: 4cm;
+    display: flex;
+    justify-content: center;
+}
+
+.comments span{
+    color: #02007d;
+    font-weight: bold;
+}
+
+.comments Button{
+    width: 50px;
+    padding: 0% 0% 0% 0%;
+    position: absolute;
+    top: 26px;
+    right: 16px;
+}
+
+
+.comments .comm{
+    
 }

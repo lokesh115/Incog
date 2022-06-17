@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import '../App.css';
 import '../index.css';
 import {useNavigate} from 'react-router-dom';
+import {Button,Form,Card} from 'react-bootstrap';
 
 function AddPostForm({uname,token}){
     const [newPost, setNewPost] = useState({
@@ -47,34 +48,24 @@ function AddPostForm({uname,token}){
     const navigate = useNavigate();
 
     return(
-        <div>
+        <Card style={{width:"24rem"}}>
         
-        <form onSubmit={submitHandler}>
-        
-            <div className="form-inner">
-                <button className="logout" onClick={() => navigate(-1)}>Home</button>
-                
-                <h2>Fill the form</h2>
+        <Form onSubmit={submitHandler}>
+                <h2 style={{marginBottom:"7%"}}>Create new post!</h2>
 
-                <div className="form-group">
-                    <label htmlFor= "title">Title:</label>
-                    <input type="title" name="title" id= "title" onChange={e => setNewPost({...newPost,title: e.target.value })} value={newPost.title}/>
+                <Form.Group style={{marginBottom:"5%"}}>
+                    <Form.Control placeholder="Title" type="title" name="title" id= "title" onChange={e => setNewPost({...newPost,title: e.target.value })} value={newPost.title}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control style={{lineHeight:"2em",rowGap:'7'}} placeholder="Description" type="story" name="story" id= "story" onChange={e => setNewPost({...newPost,story: e.target.value })} value={newPost.story}/>
+                </Form.Group>
 
-                </div>
-                <div className="form-group">
-                    <label htmlFor="">Description:</label>
-                    <input type="story" name="story" id= "story" onChange={e => setNewPost({...newPost,story: e.target.value })} value={newPost.story}/>
-
-                </div>
-
-                {!submitting && <input type="submit" value="POST"/>}
+                {!submitting && <Button style={{marginTop:"5%"}} type="submit">POST</Button>}
 
                 {submitting &&
-                <div className="submit_notify">Posted</div>
-            }
-            </div>
-        </form>  
-        </div>
+                <div className="submit_notify">Posted</div>}
+        </Form>  
+        </Card>
     )
 }
 

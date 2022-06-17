@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import Posts from "./Posts";
 import '../App.css';
-import {Card} from 'react-bootstrap'; 
+//import {Card} from 'react-bootstrap'; 
 
 function HomeView({uname,token,isAdmin}){
     const [users, setUsers] = useState([]);
@@ -19,12 +19,12 @@ function HomeView({uname,token,isAdmin}){
     });
     
     return (
-        <div>
-          <ul style={{listStyleType:"None"}}>
+        <div className="home-view">
+          <ul>
             {users.map(user => (
-              <Card className="p-3 mb-2 border border-info" style={{width: "26rem"}}>
-                <li key={user._id} ><Posts name={user.name} title={user.title} story={user.story} id={user._id} time={user.time} token={token} user={uname} isAdmin={isAdmin}/></li>
-              </Card>      
+                <li key={user._id} >
+                  <Posts name={user.name} title={user.title} story={user.story} id={user._id} time={user.time} token={token} user={uname} isAdmin={isAdmin}/>
+                </li>     
             ))}
           </ul>
           

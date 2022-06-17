@@ -40,8 +40,7 @@ function Login() {
           <div className='App'>
               {(user.name !=="") ? (
                 <div>
-                <Home uname={user.name} token={user.token} isAdmin={user.isAdmin}/>
-                <button className='logout' onClick={Logout}>Logout</button>
+                <Home uname={user.name} token={user.token} isAdmin={user.isAdmin} Logout={Logout}/>
                 </div>
             ): (
              <LoginForm Login={Login} error={error}/>   

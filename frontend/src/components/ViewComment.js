@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import '../App.css';
-
+import {Button,Card} from "react-bootstrap";
 
 function ViewComment(props){
 
@@ -28,22 +28,21 @@ function ViewComment(props){
     }
 
     return(
-        <div className="comments">
+        <div className="" style={{}}>
             {!deleting &&
-                <div>
+                <Card className="comments" style={{width: "42rem"}}>
                 <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <p style={{fontSize:"10px",color:"blue"}}>{props.postedUser}</p>
-                    <p style={{fontSize:"6px"}}>{props.time}</p> 
+                    <p style={{fontSize:"14px"}}><span>{props.postedUser} :</span> {props.message}</p>
+                    <p style={{fontSize:"8px"}}>{props.time}</p> 
                 </div>
-                <p style={{fontSize:"8px"}}>{props.message}</p>
-                {isOwner &&
-                    <button onClick={deteleHandler}>Delete</button>}
-                </div>}
-            
-            {
+                {
                 deleting && 
-                    <p>Deleted</p>
+                    <p className="comm">Deleted</p>
             }
+                
+                {isOwner &&
+                    <Button className="btn-success btn-lg float-right" variant="outline-light" style={{ fontSize:"12px"}} onClick={deteleHandler}>Delete</Button>}
+                </Card>}
         </div>
     )
 }

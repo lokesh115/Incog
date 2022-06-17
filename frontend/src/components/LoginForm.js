@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import '../index.css';
 import { Button,Card,Form,Alert } from 'react-bootstrap';
+import vid from '../images/vid.mp4'
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -31,9 +32,6 @@ function LoginForm({Login , error}) {
     const submitHandler = e => {
         e.preventDefault();
         setSubmitting(true);
-        setTimeout(()=>{
-            setSubmitting(false);
-        },2000)
         
         fetch("https://incog-back.herokuapp.com/api/user/login",user_data)
         .then(response => response.json())
@@ -61,9 +59,6 @@ function LoginForm({Login , error}) {
     };
     const createHandler = e =>{
         setCreating(true);
-        setTimeout(()=>{
-            setSubmitting(false);
-        },2000)
         fetch("https://incog-back.herokuapp.com/api/user/register",user_data)
         .then(response => response.json())
         .then(data=>{
@@ -89,6 +84,12 @@ function LoginForm({Login , error}) {
     
 
     return(
+    <div className='login-form'>
+
+        <div className="overlay"></div>
+
+        <video src={vid} autoPlay loop muted/>
+        <div className="form-div" >
         <Form onSubmit={submitHandler} className="App">
             <div className="App">
                 <Card className="p-3 mb-2 text-primary">
@@ -109,21 +110,22 @@ function LoginForm({Login , error}) {
                     
                     {signup &&
                         <div><Button onClick={()=>{
-                            setSignup(true);
+                            setSignup(false);
                             createHandler();
+                            clearFields();
                             details.password='';
                         }}>Signup</Button></div>
                         }
 
                 </Card>
                 {!signup &&
-                        <div><p onClick={()=>{setSignup(true)}} style={{textDecoration:"underline",color:"blue"}}>Create new account</p></div>
+                        <Button variant='outline-primary' onClick={()=>{setSignup(true)}} style={{}}>Create new account</Button>
                         }
                 {signup &&
-                        <div><p onClick={()=>{setSignup(false);clearFields();}} style={{textDecoration:"underline",color:"blue"}}>Go Back</p></div>
+                        <Button variant='outline-primary' onClick={()=>{setSignup(false);clearFields();}} style={{}}>Go Back</Button>
                         }
                 {error ==="" && submitting &&
-                <Alert className="alert alert-success">Loading...</Alert>
+                <Alert className="alert alert-success">Logging in...</Alert>
             }
                 {error ==="" && creating &&
                 <Alert className="alert alert-info">Creating...</Alert>
@@ -131,8 +133,12 @@ function LoginForm({Login , error}) {
                 {(error !=="") ? (<Alert className="alert alert-warning alert-dismissible fade show">{error}</Alert>): ""}
 
             </div>
-        </Form>    
+        </Form>
+        </div>
+            
 
+    </div>
+        
     )
 }
 

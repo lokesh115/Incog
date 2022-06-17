@@ -9,7 +9,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: url("./images/App-bg.jpg");
+    background: rgba(218, 232, 253, 0.415);
     
   }
   
