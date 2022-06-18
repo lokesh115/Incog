@@ -10,7 +10,7 @@ function Posts(props){
         value:false
     });
 
-    const [comments,setComments] = useState([{"comment":"No Comments Yet"}]);
+    const [comments,setComments] = useState([{"date":"date","time":"time"}]);
 
     const [commentView,setCommentView] = useState(false);
 
@@ -83,7 +83,9 @@ function Posts(props){
     setComments([{"comment":"No Comments Yet"}]);
     fetch('https://incog-back.herokuapp.com/api/posts/viewComment',commentReq)
     .then((response)=>response.json())
-    .then((data)=>{if(data.length>0) setComments(data)});
+    .then((data)=>{if(data.length>0){
+      setComments(data);
+    }});
   }
 
     return(
@@ -122,7 +124,7 @@ function Posts(props){
             <ul style={{margin:"0%", padding:"0%", textAlign:"center"}}>
               {comments.map(comm => (
                 
-                <li key={comm._id+5}><ViewComment message={comm.comment} postedUser={comm.name} date={comm.date} time={comm.time} token={props.token} _id={comm._id} user={props.user}/></li>
+                <li key={comm._id+5}><ViewComment message={comm.comment} postedUser={comm.name} token={props.token} _id={comm._id} user={props.user}/></li>
     
               ))}
             </ul>

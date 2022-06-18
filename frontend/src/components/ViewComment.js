@@ -32,8 +32,7 @@ function ViewComment(props){
             {!deleting &&
                 <Card className="comments">
                 <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <p style={{fontSize:"14px"}}><span>{props.postedUser+': '}</span> {props.message}</p>
-                    <p style={{fontSize:"8px"}}>{props.date} at {props.time}</p> 
+                    <p style={{fontSize:"14px"}}>{props.postedUser!== undefined && <span>{props.postedUser+': '}</span>} {props.message}</p> 
                 </div>
                 {
                 deleting && 

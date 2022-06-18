@@ -36,11 +36,10 @@ function MySoloPost(props){
     }
 
     return(
-        <Card className="post" style={{objectFit:"cover",width: "50rem", borderRadius:"0.5cm"}}>
+        <Card className="post" style={{objectFit:"cover",maxWidth: "50rem", borderRadius:"0.5cm"}}>
 
           <div style={{marginBottom:"5%", justifyContent:"left"}}>
-          <h3 style={{fontSize:"18px",display: "inline", wordWrap:"break-word"}}>{props.title}</h3>
-          <h2 style={{fontSize:"12px",display: "inline", wordWrap:"break-word"}}><light>Posted</light> by {props.name}</h2>
+          <h3 style={{fontSize:"18px",display: "inline", wordWrap:"break-word"}}>{props.title} <span className="span1" style={{fontSize:"12px",display: "inline", wordWrap:"break-word"}}>Posted by {props.name}</span></h3>
           <h1 style={{fontSize:"10px",display: "inline", wordWrap:"break-word"}}>{props.date} at {props.time}</h1>
           </div>
           <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={showHandler}>{show.button}</Button>
