@@ -5,14 +5,14 @@ import {Button,Card,FormControl,InputGroup} from 'react-bootstrap';
 
 function Posts(props){
 
-    //console.log(props);
-
     const [show,setShow] = useState({
         button:"View",
         value:false
     });
 
     const [comments,setComments] = useState([{"comment":"No Comments Yet"}]);
+
+    const [commentView,setCommentView] = useState(false);
 
     const [newComment, setNewComment] = useState('');
 
@@ -52,14 +52,7 @@ function Posts(props){
           setShow({...show,button: "View",value:false});
       }
       else{
-          setComments([{"comment":"No Comments Yet"}]);
           setShow({...show,button: "Hide",value:true});
-            fetch('https://incog-back.herokuapp.com/api/posts/viewComment',commentReq)
-            .then((response)=>response.json())
-            .then((data)=>{
-              console.log(data);
-              if(data.length>0) setComments(data); 
-            });
       }
     }
     const addCommentReq = {
@@ -81,17 +74,24 @@ function Posts(props){
     .then((data)=>{
         console.log(data);
       });
-      clickHandler();
+      viewCommentHandler();
 
+  }
+
+  const viewCommentHandler = ()=>{
+    setCommentView(!commentView);
+    setComments([{"comment":"No Comments Yet"}]);
+    fetch('https://incog-back.herokuapp.com/api/posts/viewComment',commentReq)
+    .then((response)=>response.json())
+    .then((data)=>{if(data.length>0) setComments(data)});
   }
 
     return(
           <Card className="post" style={{objectFit:"cover",maxWidth: "50rem", borderRadius:"0.5cm"}}>
           <div style={{marginBottom:"5%", justifyContent:"left"}}>
-          <h3 style={{fontSize:"18px",display: "inline", wordWrap:"break-word"}}>{props.title} <span className="span1" style={{fontSize:"12px",display: "inline", wordWrap:"break-word"}}><light>Posted</light> by {props.name}</span></h3>
-          <h1 style={{fontSize:"10px",display: "inline", wordWrap:"break-word"}}>{props.time}</h1>
+          <h3 style={{fontSize:"18px",display: "inline", wordWrap:"break-word"}}>{props.title} <span className="span1" style={{fontSize:"12px",display: "inline", wordWrap:"break-word"}}>Posted by {props.name}</span></h3>
+          <h1 style={{fontSize:"10px",display: "inline", wordWrap:"break-word"}}>{props.date} at {props.time}</h1>
           </div>
-          {props.isAdmin && <Button variant='info' style={{marginLeft:"15px"}} onClick={deleteHandler}>Delete</Button>}
           {show.value && 
           <div>
             <Card style={{objectFit:"cover"}}>
@@ -101,9 +101,11 @@ function Posts(props){
             </div>
           }
 
-          <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={clickHandler}>{show.button}</Button>
+          <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={clickHandler}>{show.button} Story</Button>
+          {props.isAdmin && <Button variant='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}} onClick={deleteHandler}>Delete</Button>}
+          <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={viewCommentHandler}>Comments</Button>
 
-          {show.value && 
+          {commentView && 
             <div>
               <InputGroup className="mb-3" style={{marginTop:"5%"}}>
               <FormControl
@@ -120,7 +122,7 @@ function Posts(props){
             <ul style={{margin:"0%", padding:"0%", textAlign:"center"}}>
               {comments.map(comm => (
                 
-                <li key={comm._id+5}><ViewComment message={comm.comment} postedUser={comm.name} time={comm.time} token={props.token} _id={comm._id} user={props.user}/></li>
+                <li key={comm._id+5}><ViewComment message={comm.comment} postedUser={comm.name} date={comm.date} time={comm.time} token={props.token} _id={comm._id} user={props.user}/></li>
     
               ))}
             </ul>

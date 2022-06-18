@@ -41,7 +41,7 @@ function MySoloPost(props){
           <div style={{marginBottom:"5%", justifyContent:"left"}}>
           <h3 style={{fontSize:"18px",display: "inline", wordWrap:"break-word"}}>{props.title}</h3>
           <h2 style={{fontSize:"12px",display: "inline", wordWrap:"break-word"}}><light>Posted</light> by {props.name}</h2>
-          <h1 style={{fontSize:"10px",display: "inline", wordWrap:"break-word"}}>{props.time}</h1>
+          <h1 style={{fontSize:"10px",display: "inline", wordWrap:"break-word"}}>{props.date} at {props.time}</h1>
           </div>
           <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={showHandler}>{show.button}</Button>
           <Button className='btn btn-outline-primary' style={{fontSize:"12px",marginTop:"5%"}}  onClick={deleteHandler}>Delete</Button>

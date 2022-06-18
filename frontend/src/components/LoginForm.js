@@ -119,10 +119,10 @@ function LoginForm({Login , error}) {
 
                 </Card>
                 {!signup &&
-                        <Button variant='outline-primary' onClick={()=>{setSignup(true)}} style={{}}>Create new account</Button>
+                        <Button variant='outline-light' onClick={()=>{setSignup(true)}} style={{}}>Create new account</Button>
                         }
                 {signup &&
-                        <Button variant='outline-primary' onClick={()=>{setSignup(false);clearFields();}} style={{}}>Go Back</Button>
+                        <Button variant='outline-light' onClick={()=>{setSignup(false);clearFields();}} style={{}}>Go Back</Button>
                         }
                 {error ==="" && submitting &&
                 <Alert className="alert alert-success">Logging in...</Alert>

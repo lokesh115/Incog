@@ -28,12 +28,12 @@ function ViewComment(props){
     }
 
     return(
-        <div className="" style={{}}>
+        <div className="" style={{objectFit:"cover"}}>
             {!deleting &&
-                <Card className="comments" style={{width: "42rem"}}>
+                <Card className="comments">
                 <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <p style={{fontSize:"14px"}}><span>{props.postedUser} :</span> {props.message}</p>
-                    <p style={{fontSize:"8px"}}>{props.time}</p> 
+                    <p style={{fontSize:"14px"}}><span>{props.postedUser+': '}</span> {props.message}</p>
+                    <p style={{fontSize:"8px"}}>{props.date} at {props.time}</p> 
                 </div>
                 {
                 deleting && 

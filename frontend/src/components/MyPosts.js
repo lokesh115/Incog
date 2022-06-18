@@ -27,7 +27,7 @@ function MyPosts({uname,token}){
             <h1>My posts!!!!!!!!!</h1>
             <ul className="postsList">
             {myPosts.map(post => (
-              <li key={post._id}><MySoloPost name={post.name} title={post.title} story={post.story} id={post._id} token={token}/></li>
+              <li key={post._id}><MySoloPost name={post.name} date={post.date.slice(0,10)} time={post.time} title={post.title} story={post.story} id={post._id} token={token}/></li>
             ))}
           </ul>
 

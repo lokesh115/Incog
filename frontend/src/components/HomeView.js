@@ -23,7 +23,7 @@ function HomeView({uname,token,isAdmin}){
           <ul>
             {users.map(user => (
                 <li key={user._id} >
-                  <Posts name={user.name} title={user.title} story={user.story} id={user._id} time={user.time} token={token} user={uname} isAdmin={isAdmin}/>
+                  <Posts name={user.name} title={user.title} story={user.story} id={user._id} date={user.date.slice(0,10)} time={user.time} token={token} user={uname} isAdmin={isAdmin}/>
                 </li>     
             ))}
           </ul>
