@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import '../index.css';
-
+import { Button,Card,Form,Alert } from 'react-bootstrap';
+import vid from '../images/vid.mp4'
 function LoginForm({Login , error}) {
 
     const [details, setDetails] = useState({
@@ -14,6 +15,7 @@ function LoginForm({Login , error}) {
     });
     const [submitting, setSubmitting] = useState(false);
     const [creating, setCreating] = useState(false);
+    const [signup, setSignup] = useState(false);
 
     const user_data = {
         method: 'POST',
@@ -30,9 +32,6 @@ function LoginForm({Login , error}) {
     const submitHandler = e => {
         e.preventDefault();
         setSubmitting(true);
-        setTimeout(()=>{
-            setSubmitting(false);
-        },2000)
         
         fetch("https://incog-back.herokuapp.com/api/user/login",user_data)
         .then(response => response.json())
@@ -55,15 +54,11 @@ function LoginForm({Login , error}) {
                 
             }
         })
-        details.password='';
+        details.password = '';
         //Login(details);
     };
     const createHandler = e =>{
-        e.preventDefault();
         setCreating(true);
-        setTimeout(()=>{
-            setSubmitting(false);
-        },2000)
         fetch("https://incog-back.herokuapp.com/api/user/register",user_data)
         .then(response => response.json())
         .then(data=>{
@@ -80,36 +75,70 @@ function LoginForm({Login , error}) {
             }
         })}
         
+        const clearFields = ()=>{
+            //setDetails({...details,email: ' ',password:' ' });
+            details.email = '';
+            details.password = '';
+            console.log(details);
+        }
     
 
     return(
-        <form onSubmit={submitHandler} className="App">
-            <div className="form-inner">
-                {(error !=="") ? (<div className="error">{error}</div>): ""}
-                <h1 style={{textAlign : "center", color:"#4267B2", fontFamily:"Helvetica, Arial, sans-serif"}}>incog</h1>
-                <br/>
-                <div className="form-group">
-                    <input placeholder='Username' type="text" name="email" id= "email" onChange={e => setDetails({...details,email: e.target.value })}value={details.email}/>
+    <div className='login-form'>
 
-                </div>
-                <div className="form-group">
-                    <input placeholder='Password' type="password" name="password" id= "password" onChange={e => setDetails({...details,password: e.target.value })}value={details.password}/>
+        <div className="overlay"></div>
 
-                </div>
+        <video src={vid} autoPlay loop muted/>
+        <div className="form-div" >
+        <Form onSubmit={submitHandler} className="App">
+            <div className="App">
+                <Card className="p-3 mb-2 text-primary">
+                    <Card.Body>
+                        <Card.Title>incog</Card.Title>
+                    </Card.Body>
 
-                <div><input type="submit" value="LOGIN"/></div>
-                
-                <div><input type="button" value="Create new account" onClick={createHandler}/></div>
+                    <Form.Group controlId="uname" style={{marginBottom:"10px"}}>
+                        <Form.Control placeholder='Username' type="text" name="uname" onChange={e => setDetails({...details,email: e.target.value })} value={details.email}/>
+                    </Form.Group>
 
-                {submitting &&
-                <div className="submit_notify">Loading...</div>
+                    <Form.Group controlId="password" style={{marginBottom : "15px"}}>
+                        <Form.Control placeholder='Password' type="password" name="password" onChange={e => setDetails({...details,password: e.target.value })} value={details.password}/>
+                    </Form.Group>
+                    {!signup &&
+                     <div style={{marginBottom : "10px"}}><Button variant="primary" type="submit">Login</Button></div>
+                     }
+                    
+                    {signup &&
+                        <div><Button onClick={()=>{
+                            setSignup(false);
+                            createHandler();
+                            clearFields();
+                            details.password='';
+                        }}>Signup</Button></div>
+                        }
+
+                </Card>
+                {!signup &&
+                        <Button variant='outline-light' onClick={()=>{setSignup(true)}} style={{}}>Create new account</Button>
+                        }
+                {signup &&
+                        <Button variant='outline-light' onClick={()=>{setSignup(false);clearFields();}} style={{}}>Go Back</Button>
+                        }
+                {error ==="" && submitting &&
+                <Alert className="alert alert-success">Logging in...</Alert>
             }
-                {creating &&
-                <div className="submit_notify">Creating...</div>
+                {error ==="" && creating &&
+                <Alert className="alert alert-info">Creating...</Alert>
             }
+                {(error !=="") ? (<Alert className="alert alert-warning alert-dismissible fade show">{error}</Alert>): ""}
+
             </div>
-        </form>    
+        </Form>
+        </div>
+            
 
+    </div>
+        
     )
 }
 
